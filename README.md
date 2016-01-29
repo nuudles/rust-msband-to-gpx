@@ -37,7 +37,7 @@ replacing the date with whichever date you wish to pull and a proper UTC offset.
 
 ## Caveats
 
-I've only tested this with a couple of my own run files, so it may not work at all for you. If it doesn't, feel free to create a ticket and send me an example JSON file and I can take a look. One requirement right now is that if the parser can't determine your heartrate for a given `WayPoint`, then it will skip that particular `WayPoint`. It's a TODO to make the heartrate be an optional value.
+I've only tested this with a couple of my own run files, so it may not work at all for you. If it doesn't, feel free to create a ticket and send me an example JSON file and I can take a look.
 
 ## The Story
 

@@ -114,7 +114,7 @@ fn main() {
                             map_point.get("TotalDistance").and_then(|x| x.as_f64()),
                             map_point.get("HeartRate").and_then(|x| x.as_i64())) {
 
-                            (Some(latitude), Some(longitude), Some(distance), Some(heart_rate)) => {
+                            (Some(latitude), Some(longitude), Some(distance), heart_rate) => {
                                 while distance_and_time_array.len() > 0 && distance > distance_and_time_array[0].0 {
                                     last_distance_and_time = distance_and_time_array.remove(0);
                                 }
@@ -140,13 +140,15 @@ fn main() {
                                 time_element.append_child(gpx_document.create_text(&waypoint_date.format("%Y-%m-%dT%H:%M:%SZ").to_string()));
                                 trackpoint_element.append_child(time_element);
 
-                                let extensions_element = gpx_document.create_element("extensions");
-                                let trackpoint_extension_element = gpx_document.create_element("gpxtpx:TrackPointExtension");
-                                let heartrate_element = gpx_document.create_element("gpxtpx:hr");
-                                heartrate_element.append_child(gpx_document.create_text(&format!("{}", heart_rate)));
-                                trackpoint_extension_element.append_child(heartrate_element);
-                                extensions_element.append_child(trackpoint_extension_element);
-                                trackpoint_element.append_child(extensions_element);
+                                if let Some(heart_rate) = heart_rate {
+                                    let extensions_element = gpx_document.create_element("extensions");
+                                    let trackpoint_extension_element = gpx_document.create_element("gpxtpx:TrackPointExtension");
+                                    let heartrate_element = gpx_document.create_element("gpxtpx:hr");
+                                    heartrate_element.append_child(gpx_document.create_text(&format!("{}", heart_rate)));
+                                    trackpoint_extension_element.append_child(heartrate_element);
+                                    extensions_element.append_child(trackpoint_extension_element);
+                                    trackpoint_element.append_child(extensions_element);
+                                }
                             },
                             _ => {}
                         }

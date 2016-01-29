@@ -1,0 +1,16 @@
+[package]
+name = "convert-to-gpx"
+version = "0.1.0"
+authors = ["Christopher Luu <nuudles@gmail.com>"]
+description = "A small tool to convert Microsoft Health run JSON files into GPX format"
+keywords = ["gpx", "fitness"]
+
+homepage = "https://github.com/nuudles/convert-to-gpx"
+repository = "https://github.com/nuudles/convert-to-gpx"
+
+license = "MIT"
+
+[dependencies]
+sxd-document = "0.2.0"
+rustc-serialize = "0.3.16"
+chrono = "0.2.18"

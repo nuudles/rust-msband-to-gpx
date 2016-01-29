@@ -12,7 +12,7 @@ use sxd_document::Package;
 use sxd_document::writer::format_document;
 
 fn help() {
-    println!("usage: convert-to-gpx infile.json [outfile.gpx]");
+    println!("usage: rust-msband-to-gpx infile.json [outfile.gpx]");
 }
 
 fn main() {
